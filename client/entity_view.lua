@@ -169,7 +169,17 @@ local GetEntityInfo = function(entity)
     local entityType    = GetEntityType(entity)
     local entityHash    = GetEntityModel(entity)
     local entityName    = Entities[entityHash] or Lang:t("info.obj_unknown")
-    local entityData    = {'~y~'..Lang:t("info.entity_view_info"),'',Lang:t("info.model_hash")..' ~y~'..entityHash,' ',Lang:t("info.ent_id")..' ~y~'..entity,Lang:t("info.obj_name")..' ~y~'.. entityName,Lang:t("info.net_id")..' ~y~'..(NetworkGetEntityIsNetworked(entity) and NetworkGetNetworkIdFromEntity(entity) or Lang:t("info.net_id_not_registered")),Lang:t("info.ent_owner")..' ~y~'..GetPlayerServerId(NetworkGetEntityOwner(entity)),' '}
+    local entityData    = {
+        '~y~'..Lang:t("info.entity_view_info"),
+        '',
+        Lang:t("info.model_hash")..' ~y~'..entityHash,
+        ' ',
+        Lang:t("info.ent_id")..' ~y~'..entity, 
+        Lang:t("info.obj_name")..' ~y~'.. entityName,
+        Lang:t("info.net_id")..' ~y~'.. (NetworkGetEntityIsNetworked(entity) and NetworkGetNetworkIdFromEntity(entity) or Lang:t("info.net_id_not_registered")),
+        Lang:t("info.ent_owner")..' ~y~'..GetPlayerServerId(NetworkGetEntityOwner(entity)),
+        ' '
+    }
 
     if entityType == 1 then
         local pedRelationshipGroup = GetPedRelationshipGroupHash(entity)
